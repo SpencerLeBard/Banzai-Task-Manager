@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>This is your home page.</h1>
+    <h1>Welcome to Banzai (Mello if not chill)! Please login to view boards ... info about group plus picture of example</h1>
   </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
   },
   computed: {},
   methods: {},
-  components: {}
+  components: {},
 };
 </script>
 
