@@ -7,7 +7,7 @@ const Board = new Schema({
   description: { type: String, required: true },
   creatorEmail: { type: String, required: true }
 }, { timestamps: true, toJSON: { virtuals: true } })
-
+//push test
 Board.virtual("creator",
   {
     localField: "creatorEmail",
