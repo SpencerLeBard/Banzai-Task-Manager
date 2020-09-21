@@ -1,3 +1,6 @@
-export const domain = "";
-export const audience = "";
-export const clientId = "";
+export const domain = "dev-sa6ykm75.us.auth0.com";
+export const audience = "https://kanban";
+export const clientId = "HSawOaGbXAgi79N1BGx7bEYNC8ZgtdxV";
+
+
+// TODO use .env file data to fill out this form
