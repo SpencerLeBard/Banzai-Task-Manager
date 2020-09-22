@@ -1,3 +1,4 @@
+import { authProvider } from "@bcwdev/auth0-vue/AuthProvider"
 import Vue from 'vue'
 import Vuex from 'vuex'
 import router from '../router/index'
@@ -19,6 +20,9 @@ export default new Vuex.Store({
     },
     setBoards(state, boards) {
       state.boards = boards
+    },
+    setActiveBoard(state, board) {
+      state.activeBoard= board
     }
   },
   actions: {
@@ -56,7 +60,16 @@ export default new Vuex.Store({
         .then(serverBoard => {
           dispatch('getBoards')
         })
-    }
+    },
+
+    async getActiveBoard({ commit }, boardId){
+      try {
+        let res = await api.get('boards/' + boardId)
+        commit('setActiveBoard', res.data)
+      } catch (error) {
+        console.error(error);
+      }
+    } 
     //#endregion
 
 
