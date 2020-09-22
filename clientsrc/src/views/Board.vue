@@ -22,7 +22,8 @@
 
 <script>
 import ListComponent from "../components/ListComponent";
-import TaskComponent from "../components/TaskComponent"
+import TaskComponent from "../components/TaskComponent";
+import CommentComponent from "../components/CommentComponent";
 export default {
   name: "board",
   mounted() {
@@ -36,14 +37,14 @@ export default {
       //FIXME This does not work on page reload because the activeBoard is empty in the store
       return this.$store.state.activeBoard;
     },
-    tasks(){
-      return this.$store.state.tasks
-    }
+    tasks() {
+      return this.$store.state.tasks;
+    },
   },
   props: ["boardId"],
   components: {
     ListComponent,
-    TaskComponent
+    TaskComponent,
   },
 };
 </script>
