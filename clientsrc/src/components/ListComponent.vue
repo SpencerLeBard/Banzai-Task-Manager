@@ -14,21 +14,20 @@
 </template>
 
 <script>
-import TaskComponent from '../components/TaskComponent'
+import TaskComponent from "../components/TaskComponent";
 export default {
   name: "list-component",
-  mounted(){
-    this.$store.dispatch('getTasks', this.listProp.id)
+  mounted() {
+    this.$store.dispatch("getTasks", this.listProp.id);
   },
   props: ["listProp"],
   computed: {
-    tasks(){
-      return this.$store.state.tasks
-    }
+    tasks() {
+      return this.$store.state.tasks[this.listProp.id];
+    },
   },
-  components: {TaskComponent}
+  components: { TaskComponent },
 };
-
 </script>
 
 <style>

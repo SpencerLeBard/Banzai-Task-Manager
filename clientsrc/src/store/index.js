@@ -30,8 +30,11 @@ export default new Vuex.Store({
     setLists(state, lists) {
       state.lists = lists
     },
-    setTasks(state, tasks) {
-      state.tasks = tasks
+    setTasks(state, data) {
+      Vue.set(state.tasks, data.listId, data.tasks)
+    },
+    setComments(state, comments) {
+      state.comments = comments
     }
   },
   actions: {
@@ -90,7 +93,16 @@ export default new Vuex.Store({
     async getTasks({ commit }, listId) {
       try {
         let res = await api.get('lists/' + listId + '/tasks')
-        commit('setTasks', res.data)
+        commit('setTasks', { tasks: res.data, listId: listId })
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async getComments({ commit }, taskId) {
+      try {
+        let res = await api.get('tasks/' + taskId + '/comments')
+        console.log(res);
+        commit('setComments', res.data)
       } catch (error) {
         console.error(error);
       }
