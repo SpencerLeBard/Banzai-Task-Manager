@@ -43,6 +43,7 @@ export default new Vuex.Store({
       Vue.set(state.comments, data.taskId, data.comments)
     }
   },
+
   actions: {
     //#region -- AUTH STUFF --
     setBearer({ }, bearer) {
