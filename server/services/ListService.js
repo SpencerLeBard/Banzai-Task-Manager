@@ -13,6 +13,10 @@ class ListService{
     }
     return data
   }
+  async getListsByBoardId(boardId, email){
+    let data = await dbContext.Lists.find({ boardId: boardId, creatorEmail: email})
+    return data
+  }
 
   async create(rawData) {
     let data = await dbContext.Lists.create(rawData)

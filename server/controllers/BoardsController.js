@@ -14,7 +14,7 @@ export class BoardsController extends BaseController {
       .use(auth0provider.getAuthorizedUserInfo)
       .get('', this.getAll)
       .get('/:id', this.getById)
-      .get('/:id/lists', this.getAllLists)
+      .get('/:id/lists', this.getListsByBoardId)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
@@ -31,9 +31,9 @@ export class BoardsController extends BaseController {
   }
 
   // FIXME GET ALL LISTS
-  async getAllLists(req, res, next) {
+  async getListsByBoardId(req, res, next) {
     try {
-      let data = await listService.getAll(req.userInfo.email)
+      let data = await listService.getListsByBoardId(req.params.id, req.userInfo.email)
       return res.send(data)
     }
     catch (err) { next(err) }
