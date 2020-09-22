@@ -28,7 +28,7 @@ export default new Vuex.Store({
       state.activeBoard = board
     },
     createBoard(state, board) {
-      state.boards = board
+      state.boards.push(board)
     },
     setLists(state, lists) {
       state.lists = lists
@@ -73,7 +73,7 @@ export default new Vuex.Store({
         console.error(error);
       }
     },
-    async addBoard({ commit, dispatch }, boardData) {
+    async addBoard({ commit }, boardData) {
       try {
         let res = await api.post('boards', boardData)
         commit("createBoard", res.data)
