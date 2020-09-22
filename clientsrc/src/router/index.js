@@ -23,7 +23,9 @@ export default new Router({
     {
       path: '/boards/:boardId',
       name: 'board',
-      component: Board
+      component: Board,
+      beforeEnter: authGuard
+
     },
     {
       path: "*",

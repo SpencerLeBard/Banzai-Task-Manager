@@ -16,26 +16,28 @@
 export default {
   name: "boards",
   mounted() {
-    this.$store.dispatch("getBoards");
+    this.$store.dispatch("getBoards", this.$route.params.boardId);
+
+    //NOTE mounted that runs get active board that gets by id and sets as active board
   },
   data() {
     return {
       newBoard: {
         title: "",
-        description: ""
-      }
+        description: "",
+      },
     };
   },
   computed: {
     boards() {
       return this.$store.state.boards;
-    }
+    },
   },
   methods: {
     addBoard() {
       this.$store.dispatch("addBoard", this.newBoard);
       this.newBoard = { title: "", description: "" };
-    }
-  }
+    },
+  },
 };
 </script>
