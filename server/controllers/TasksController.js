@@ -1,8 +1,8 @@
 import BaseController from "../utils/BaseController";
 import auth0provider from "@bcwdev/auth0provider";
 import { taskService } from '../services/TaskService'
-import { dbContext } from "../db/DbContext";
-import Task from "../models/Task";
+import { commentService } from '../services/CommentService'
+
 
 export class TasksController extends BaseController {
   constructor() {
@@ -11,6 +11,7 @@ export class TasksController extends BaseController {
       .use(auth0provider.getAuthorizedUserInfo)
       .get('', this.getAll)
       .get('/:id', this.getById)
+      .get('/:id/comments', this.getAllComments)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
@@ -24,6 +25,17 @@ export class TasksController extends BaseController {
       next(error)
     }
   }
+
+  //FIXME GET ALL COMMENTS
+  async getAllComments(req, res, next) {
+    try {
+      let data = await commentService.getAll(req.userInfo.email)
+      return res.send(data)
+    } catch (error) {
+      next(error)
+    }
+  }
+
   async getById(req, res, next) {
     try {
       let data = await taskService.getById(req.params.id, req.userInfo.email)

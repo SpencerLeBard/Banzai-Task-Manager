@@ -2,6 +2,7 @@ import express from 'express'
 import BaseController from "../utils/BaseController";
 import auth0provider from "@bcwdev/auth0provider";
 import { boardService } from '../services/BoardService'
+import { listService } from '../services/ListService'
 
 
 
@@ -13,6 +14,7 @@ export class BoardsController extends BaseController {
       .use(auth0provider.getAuthorizedUserInfo)
       .get('', this.getAll)
       .get('/:id', this.getById)
+      .get('/:id/lists', this.getAllLists)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
@@ -23,6 +25,15 @@ export class BoardsController extends BaseController {
     try {
       //only gets boards by user who is logged in
       let data = await boardService.getAll(req.userInfo.email)
+      return res.send(data)
+    }
+    catch (err) { next(err) }
+  }
+
+  // FIXME GET ALL LISTS
+  async getAllLists(req, res, next) {
+    try {
+      let data = await listService.getAll(req.userInfo.email)
       return res.send(data)
     }
     catch (err) { next(err) }
