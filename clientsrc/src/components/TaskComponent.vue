@@ -16,7 +16,7 @@ export default {
   },
   computed: {
     comments() {
-      return this.$store.state.comments;
+      return this.$store.state.comments[this.taskProp.id];
     },
   },
   props: ["taskProp"],

@@ -33,8 +33,8 @@ export default new Vuex.Store({
     setTasks(state, data) {
       Vue.set(state.tasks, data.listId, data.tasks)
     },
-    setComments(state, comments) {
-      state.comments = comments
+    setComments(state, data) {
+      Vue.set(state.comments, data.taskId, data.comments)
     }
   },
   actions: {
@@ -101,8 +101,7 @@ export default new Vuex.Store({
     async getComments({ commit }, taskId) {
       try {
         let res = await api.get('tasks/' + taskId + '/comments')
-        console.log(res);
-        commit('setComments', res.data)
+        commit('setComments', { comments: res.data, taskId: taskId })
       } catch (error) {
         console.error(error);
       }
