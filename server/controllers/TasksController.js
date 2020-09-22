@@ -11,7 +11,7 @@ export class TasksController extends BaseController {
       .use(auth0provider.getAuthorizedUserInfo)
       .get('', this.getAll)
       .get('/:id', this.getById)
-      .get('/:id/comments', this.getAllComments)
+      .get('/:id/comments', this.getCommentsByTaskId)
       .post('', this.create)
       .put('/:id', this.edit)
       .delete('/:id', this.delete)
@@ -27,9 +27,9 @@ export class TasksController extends BaseController {
   }
 
   //FIXME GET ALL COMMENTS
-  async getAllComments(req, res, next) {
+  async getCommentsByTaskId(req, res, next) {
     try {
-      let data = await commentService.getAll(req.userInfo.email)
+      let data = await commentService.getCommentsByTaskId(req.params.id, req.userInfo.email)
       return res.send(data)
     } catch (error) {
       next(error)

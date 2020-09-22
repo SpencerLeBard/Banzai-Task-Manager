@@ -14,6 +14,11 @@ class TaskService {
     return data
 
   }
+
+  async getTasksByListId(listId, userEmail){
+    let data = await dbContext.Tasks.find({ listId: listId, creatorEmail: userEmail })
+    return data
+  }
   async create(rawData) {
     let data = await dbContext.Tasks.create(rawData)
     return data

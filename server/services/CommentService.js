@@ -14,6 +14,11 @@ class CommentService {
     return data
   }
 
+  async getCommentsByTaskId(taskId, userEmail){
+    let data = await dbContext.Comments.find({ taskId: taskId, creatorEmail: userEmail})
+    return data
+  }
+
   async create(rawData) {
     let data = await dbContext.Comments.create(rawData)
     return data
