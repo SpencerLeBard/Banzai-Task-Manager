@@ -41,11 +41,15 @@ export default new Vuex.Store({
 
 
     //#region -- BOARDS --
-    getBoards({ commit, dispatch }) {
-      api.get('boards')
-        .then(res => {
-          commit('setBoards', res.data)
-        })
+
+    async getBoards({ commit }) {
+      try {
+        let res = await api.get('boards')
+        console.log(res);
+        commit("setBoards", res.data)
+      } catch (error) {
+        console.error(error);
+      }
     },
     addBoard({ commit, dispatch }, boardData) {
       api.post('boards', boardData)
