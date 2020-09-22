@@ -30,6 +30,9 @@ export default new Vuex.Store({
     createBoard(state, board) {
       state.boards = board
     },
+    removeBoard(state, id) {
+      state.boards = state.boards.filter(b => b.id != id)
+    },
     setLists(state, lists) {
       state.lists = lists
     },
@@ -77,6 +80,17 @@ export default new Vuex.Store({
       try {
         let res = await api.post('boards', boardData)
         commit("createBoard", res.data)
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    async deleteBoard({ commit }, boardId) {
+      try {
+        await api.delete('boards/' + boardId)
+        commit("removeBoard", boardId)
+        // commit("setActivePost", {})
+        // router.push({ name: "Home" })
       } catch (error) {
         console.error(error);
       }

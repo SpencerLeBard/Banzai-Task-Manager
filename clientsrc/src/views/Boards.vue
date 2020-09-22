@@ -7,7 +7,9 @@
       <button type="submit">Create Board</button>
     </form>
     <div v-for="board in boards" :key="board.id">
-      <router-link :to="{name: 'board', params: {boardId: board.id}}">{{board.title}}</router-link>
+      <router-link
+        :to="{name: 'board', params: {boardId: board.id}}"
+      >{{board.title}} xDELETE Buttonx</router-link>
     </div>
   </div>
 </template>
@@ -17,8 +19,6 @@ export default {
   name: "boards",
   mounted() {
     this.$store.dispatch("getBoards", this.$route.params.boardId);
-
-    //NOTE mounted that runs get active board that gets by id and sets as active board
   },
   data() {
     return {
@@ -37,6 +37,9 @@ export default {
     addBoard() {
       this.$store.dispatch("addBoard", this.newBoard);
       this.newBoard = { title: "", description: "" };
+    },
+    deleteBoard() {
+      this.$store.dispatch("deleteBoard", this.post._id);
     },
   },
 };

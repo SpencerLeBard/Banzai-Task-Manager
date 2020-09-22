@@ -46,5 +46,6 @@ export default {
     ListComponent,
     TaskComponent,
   },
+  methods: {},
 };
 </script>
