@@ -1,16 +1,17 @@
 <template>
-  <div class="col-3 listComp ml-2">
-    <div class="rounded" style="width: 25rem;">
-      <h4 class="card-header d-flex justify-content-between">{{listProp.title}}</h4>
-      <button @click="deleteList">Delete list</button>
+  <div class="col-3 ml-2">
+    <div class="rounded" style="min-width: 25rem;">
+      <h4 class="card-header d-flex justify-content-between">{{listProp.title}}
+        <button @click="deleteList">Delete list</button>
+      </h4>
+      <form @submit.prevent="addTask">
+        <input type="text" placeholder="add task" v-model="newTask.title" required />
+      </form>
+      
       <div class="row tasks">
         <task-component v-for="task in tasks" :key="task.id" :taskProp="task" />
         <!-- Tasks injected here w/ cols -->
       </div>
-      <form @submit.prevent="addTask">
-        <input type="text" placeholder="add task" v-model="newTask.title" required />
-        <button type="submit">Add Task</button>
-      </form>
     </div>
   </div>
 </template>

@@ -1,8 +1,9 @@
 <template>
   <div class="col-12 taskComp">
     <div class="rounded">
-      <button @click="deleteTask">Delete Task</button>
-      <p class="card-header d-flex justify-content-between">{{taskProp.title}}</p>
+      <p class="card-header d-flex justify-content-between">{{taskProp.title}}
+        <button @click="deleteTask">Delete Task</button>
+      </p>
     </div>
     <comment-component v-for="comment in comments" :key="comment.id" :commentProp="comment" />
     <form @submit.prevent="addComment">

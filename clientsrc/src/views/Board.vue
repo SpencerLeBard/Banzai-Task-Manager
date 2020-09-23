@@ -30,7 +30,7 @@
       <input type="text" placeholder="list name" v-model="newList.title" required>
     <button @click="addList">Add List</button>
     </form>
-    <div class="row lists">
+    <div class="row d-flex ">
       <list-component v-for="list in lists" :key="list.id" :listProp="list" />
       <!-- inject lists here -->
       <!-- <div class="col-3 listComp">
