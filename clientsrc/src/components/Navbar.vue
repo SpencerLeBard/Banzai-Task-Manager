@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-danger">
+  <nav class="navbar navbar-expand-lg bg-danger justfiy-content-center">
     <router-link class="navbar-brand text-white text-center" :to="{ name: 'home' }">BANZAI | バンザイ</router-link>
     <button
       class="navbar-toggler"
@@ -26,8 +26,8 @@
         </li>
       </ul>
       <span class="navbar-text">
-        <button class="btn btn-success" @click="login" v-if="!$auth.isAuthenticated">Login</button>
-        <button class="btn btn-danger" @click="logout" v-else>logout</button>
+        <button class="btn bg-white" @click="login" v-if="!$auth.isAuthenticated">Login</button>
+        <button class="btn bg-white" @click="logout" v-else>logout</button>
       </span>
     </div>
   </nav>

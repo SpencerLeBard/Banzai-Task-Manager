@@ -1,13 +1,13 @@
 <template>
   <div class="japanese-home-picture">
-    <div class="boards card create-boards-card justify-content-center google-fonts d-flex">
+    <div class="boards card create-boards-card justify-content-center google-fonts">
       Create a Board or Pick One You Have Already Made!
       <form @submit.prevent="addBoard">
         <input type="text" placeholder="title" v-model="newBoard.title" required />
         <input type="text" placeholder="description" v-model="newBoard.description" />
-        <button type="submit">Create Board</button>
+        <button class="btn btn-danger" type="submit">Create Board</button>
       </form>
-      <div class="boards-card card" v-for="board in boards" :key="board.id">
+      <div class="boards-card card justify-content-center" v-for="board in boards" :key="board.id">
         <router-link :to="{name: 'board', params: {boardId: board.id}}">{{board.title}}</router-link>
       </div>
     </div>
