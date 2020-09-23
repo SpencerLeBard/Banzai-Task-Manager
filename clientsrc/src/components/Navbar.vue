@@ -1,8 +1,6 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <router-link class="navbar-brand" :to="{ name: 'home' }"
-      >BANZAI</router-link
-    >
+  <nav class="navbar navbar-expand-lg bg-danger">
+    <router-link class="navbar-brand text-white text-center" :to="{ name: 'home' }">BANZAI | バンザイ</router-link>
     <button
       class="navbar-toggler"
       type="button"
@@ -14,31 +12,21 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarText">
+    <div class="collapse navbar-collapse text-white" id="navbarText">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" :class="{ active: $route.name == 'home' }">
-          <router-link :to="{ name: 'home' }" class="nav-link"
-            >Home</router-link
-          >
+          <router-link :to="{ name: 'home' }" class="nav-link text-white">Home</router-link>
         </li>
         <li
           class="nav-item"
           v-if="$auth.isAuthenticated"
           :class="{ active: $route.name == 'boards' }"
         >
-          <router-link class="nav-link" :to="{ name: 'boards' }"
-            >My-Dashboard</router-link
-          >
+          <router-link class="nav-link text-white" :to="{ name: 'boards' }">My Boards</router-link>
         </li>
       </ul>
       <span class="navbar-text">
-        <button
-          class="btn btn-success"
-          @click="login"
-          v-if="!$auth.isAuthenticated"
-        >
-          Login
-        </button>
+        <button class="btn btn-success" @click="login" v-if="!$auth.isAuthenticated">Login</button>
         <button class="btn btn-danger" @click="logout" v-else>logout</button>
       </span>
     </div>
@@ -50,7 +38,7 @@ import axios from "axios";
 
 let _api = axios.create({
   baseURL: "https://localhost:3000",
-  withCredentials: true
+  withCredentials: true,
 });
 export default {
   name: "Navbar",
@@ -63,10 +51,18 @@ export default {
       console.log(this.$auth.user);
     },
     async logout() {
-      await this.$auth.logout({returnTo: window.location.origin});
-    }
-  }
+      await this.$auth.logout({ returnTo: window.location.origin });
+    },
+  },
 };
 </script>
 
-<style></style>
+<style>
+.navbar {
+  background-color: 931a25;
+  color: white;
+}
+.a {
+  color: white;
+}
+</style>
