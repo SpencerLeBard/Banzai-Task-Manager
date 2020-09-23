@@ -5,10 +5,25 @@
       {{board.title}}
     </h1> 
     <i class="fa fa-pencil text-warning"
-       aria-hidden="true"
-       @click="editToggle = !editToggle"
-       v-if="isCreator">
-       </i>
+       aria-hidden="true" 
+       @click="editToggle = !editToggle">
+      </i>
+      <form class="form-inline" @submit.prevent="editBoard" v-if="editToggle">
+              <input
+                type="text"
+                class="form-control"
+                aria-describedby="helpId"
+                v-model="boardData.title"
+              />
+              <input
+                type="text"
+                class="form-control"
+                aria-describedby="helpId"
+                v-model="boardData.body"
+              />
+              <button type="submit" class="btn btn-warning"><i class="fa fa-arrow-circle-right big-icon" aria-hidden="true"></i></button>
+          </form>
+
 
     <h4 v-if="board.description">{{board.description}}</h4>
     <form onsubmit.prevent="addList">
@@ -57,7 +72,13 @@ export default {
     return {newList: {
       title: '',
       boardId: this.$route.params.boardId
-    }}
+    },
+      boardData: {
+        title: '',
+        body: ''
+      },
+      editToggle: false
+    }
   },
   props: ["boardId"],
   components: {
