@@ -19,7 +19,7 @@
                 type="text"
                 class="form-control"
                 aria-describedby="helpId"
-                v-model="boardData.body"
+                v-model="boardData.description"
               />
               <button type="submit" class="btn btn-warning"><i class="fa fa-arrow-circle-right big-icon" aria-hidden="true"></i></button>
           </form>
@@ -75,7 +75,7 @@ export default {
     },
       boardData: {
         title: '',
-        body: ''
+        description: ''
       },
       editToggle: false
     }
@@ -93,7 +93,8 @@ export default {
       this.$store.dispatch('addList', this.newList)
     },
     editBoard(){
-      this.boardData.id = this.$route.params.id
+      this.boardData.id = this.$route.params.boardId
+      console.log(this.boardData)
       this.$store.dispatch('editBoard', this.boardData)
     }
   },

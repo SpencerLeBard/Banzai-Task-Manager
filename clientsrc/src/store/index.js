@@ -48,6 +48,9 @@ export default new Vuex.Store({
     createTask(state, tasks) {
       state.tasks = tasks
     },
+    removeTask(state, task){
+      state.tasks[task.listId] = state.tasks[task.listId].filter(t => t.id != task.id)
+    },
     setComments(state, data) {
       Vue.set(state.comments, data.taskId, data.comments)
     },
@@ -140,6 +143,15 @@ export default new Vuex.Store({
       }
     },
 
+    async deleteTask({ commit }, task){
+      try {
+        await api.delete('tasks/' + task.id)
+        commit("removeTask", task)
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
     async getTasks({ commit }, listId) {
       try {
         let res = await api.get('lists/' + listId + '/tasks')
@@ -184,7 +196,7 @@ export default new Vuex.Store({
     async editBoard({ commit }, boardData){
       try {
         let res = await api.put('boards/' + boardData.id, boardData)
-        console.log(res.data)
+        commit('setActiveBoard', res.data)
       } catch (error) {
         console.error(error);
       }

@@ -1,6 +1,7 @@
 <template>
   <div class="col-12 taskComp">
     <div class="rounded">
+      <button @click="deleteTask">Delete Task</button>
       <p class="card-header d-flex justify-content-between">{{taskProp.title}}</p>
     </div>
     <comment-component v-for="comment in comments" :key="comment.id" :commentProp="comment" />
@@ -31,6 +32,10 @@ export default {
     addComment() {
       this.$store.dispatch("addComment", this.newComment);
     },
+    deleteTask(){
+      console.log(this.taskProp)
+      this.$store.dispatch('deleteTask', this.taskProp)
+    }
   },
   props: ["taskProp"],
   components: {
