@@ -36,6 +36,9 @@ export default new Vuex.Store({
     setLists(state, lists) {
       state.lists = lists
     },
+    removeList(state, list) {
+      state.lists = state.lists.filter(l => l.id != list)
+    },
     createList(state, lists) {
       state.lists = lists
     },
@@ -128,20 +131,32 @@ export default new Vuex.Store({
         console.error(error);
       }
     },
-
-    async getTasks({ commit }, listId) {
+    async deleteList({ commit }, listId) {
       try {
-        let res = await api.get('lists/' + listId + '/tasks')
-        commit('setTasks', { tasks: res.data, listId: listId })
+        await api.delete('lists/' + listId)
+        commit("removeList", listId)
       } catch (error) {
         console.error(error);
       }
     },
 
-    async addTask({ commit }, taskData) {
+    async getTasks({ commit }, listId) {
+      try {
+        let res = await api.get('lists/' + listId + '/tasks')
+        commit('setTasks', {
+          tasks: res.data, listId: listId
+        })
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
+    async addTask({ commit, dispatch }, taskData) {
       try {
         let res = await api.post('tasks', taskData)
+        console.log(res);
         commit("createTask", res.data)
+        dispatch("getTasks", taskData.listId)
       } catch (error) {
         console.error(error);
       }

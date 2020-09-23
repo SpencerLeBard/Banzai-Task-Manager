@@ -19,6 +19,19 @@ export default {
       return this.$store.state.comments[this.taskProp.id];
     },
   },
+  data() {
+    return {
+      newComment: {
+        title: "",
+        listId: this.$route.params.commentId,
+      },
+    };
+  },
+  methods: {
+    addComment() {
+      this.$store.dispatch("addComment", this.newComment);
+    },
+  },
   props: ["taskProp"],
   components: {
     CommentComponent,
