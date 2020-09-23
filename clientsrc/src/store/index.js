@@ -89,8 +89,8 @@ export default new Vuex.Store({
       try {
         await api.delete('boards/' + boardId)
         commit("removeBoard", boardId)
-        // commit("setActivePost", {})
-        // router.push({ name: "Home" })
+        // commit("setActiveBoard", {})
+        // router.push({ name: "Boards" })
       } catch (error) {
         console.error(error);
       }

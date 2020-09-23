@@ -1,6 +1,9 @@
 <template>
   <div class="container-fluid board">
-    <h1 v-if="board.title">{{board.title}}</h1>
+    <h1 v-if="board.title">
+      {{board.title}}
+      <i class="fa fa-times" aria-hidden="true"></i>
+    </h1>
     <h4 v-if="board.description">{{board.description}}</h4>
     <div class="row lists">
       <list-component v-for="list in lists" :key="list.id" :listProp="list" />
@@ -42,12 +45,12 @@ export default {
     deleteBoard() {
       this.$store.dispatch("deleteBoard", this.board._id);
     },
-    props: ["boardId"],
-    components: {
-      ListComponent,
-      TaskComponent,
-    },
-    methods: {},
   },
+  props: ["boardId"],
+  components: {
+    ListComponent,
+    TaskComponent,
+  },
+  methods: {},
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="boards">
-    Create a Board or Pick One!
+    Create a Board or Pick One You Have Already Made!
     <form @submit.prevent="addBoard">
       <input type="text" placeholder="title" v-model="newBoard.title" required />
       <input type="text" placeholder="description" v-model="newBoard.description" />
@@ -8,7 +8,6 @@
     </form>
     <div v-for="board in boards" :key="board.id">
       <router-link :to="{name: 'board', params: {boardId: board.id}}">{{board.title}}</router-link>
-      <i class="fa fa-times" aria-hidden="true"></i>
     </div>
   </div>
 </template>
