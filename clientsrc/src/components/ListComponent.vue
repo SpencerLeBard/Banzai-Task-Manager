@@ -1,6 +1,6 @@
 <template>
-  <div class="col-3 ml-2">
-    <div class="rounded" style="min-width: 25rem;">
+  <div class="col-4 ml-2">
+    <div class="rounded" style="min-width: 25%;">
       <h4 class="card-header d-flex justify-content-between">{{listProp.title}}
         <button @click="deleteList">Delete list</button>
       </h4>
