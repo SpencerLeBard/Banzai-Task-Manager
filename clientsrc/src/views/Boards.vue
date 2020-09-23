@@ -7,9 +7,8 @@
       <button type="submit">Create Board</button>
     </form>
     <div v-for="board in boards" :key="board.id">
-      <router-link
-        :to="{name: 'board', params: {boardId: board.id}}"
-      >{{board.title}} xDELETE Buttonx</router-link>
+      <router-link :to="{name: 'board', params: {boardId: board.id}}">{{board.title}}</router-link>
+      <i class="fa fa-times" aria-hidden="true"></i>
     </div>
   </div>
 </template>

@@ -34,18 +34,20 @@ export default {
       return this.$store.state.lists;
     },
     board() {
-      //FIXME This does not work on page reload because the activeBoard is empty in the store
       return this.$store.state.activeBoard;
     },
     tasks() {
       return this.$store.state.tasks;
     },
+    deleteBoard() {
+      this.$store.dispatch("deleteBoard", this.board._id);
+    },
+    props: ["boardId"],
+    components: {
+      ListComponent,
+      TaskComponent,
+    },
+    methods: {},
   },
-  props: ["boardId"],
-  components: {
-    ListComponent,
-    TaskComponent,
-  },
-  methods: {},
 };
 </script>

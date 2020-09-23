@@ -100,6 +100,7 @@ export default new Vuex.Store({
       try {
         let res = await api.get('boards/' + boardId)
         commit('setActiveBoard', res.data)
+        // @ts-ignore
         this.dispatch("getLists", boardId);
       } catch (error) {
         console.error(error);
