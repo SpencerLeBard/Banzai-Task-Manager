@@ -2,7 +2,7 @@
   <div class="col-3 ml-2">
     <div class="rounded" style="min-width: 25rem;">
       <h4 class="card-header d-flex justify-content-between">{{listProp.title}}</h4>
-      <button @click="deleteList">delete list</button>
+      <button @click="deleteList">Delete list</button>
       <div class="row tasks">
         <task-component v-for="task in tasks" :key="task.id" :taskProp="task" />
         <!-- Tasks injected here w/ cols -->
