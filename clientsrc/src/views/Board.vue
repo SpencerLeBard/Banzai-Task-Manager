@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid board">
-    <button @click="deleteBoard">delete</button>
+    <i class="fa fa-trash-o" @click="deleteBoard" aria-hidden="true"></i>
     <h1 v-if="board.title">
       {{board.title}}
     </h1> 
@@ -8,7 +8,7 @@
        aria-hidden="true" 
        @click="editToggle = !editToggle">
       </i>
-      <form class="form-inline" @submit.prevent="editBoard" v-if="editToggle">
+      <form class="form-inline" @submit.prevent="editBoard, editToggle = !editToggle" v-if="editToggle">
               <input
                 type="text"
                 class="form-control"
@@ -30,7 +30,7 @@
       <input type="text" placeholder="list name" v-model="newList.title" required>
     <button @click="addList">Add List</button>
     </form>
-    <div class="row d-flex ">
+    <div class="row d-flex">
       <list-component v-for="list in lists" :key="list.id" :listProp="list" />
       <!-- inject lists here -->
       <!-- <div class="col-3 listComp">
