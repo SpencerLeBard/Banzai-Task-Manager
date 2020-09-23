@@ -1,6 +1,6 @@
 <template>
-  <div class="col-3 listComp ml-2">
-    <div class="rounded" style="width: 25rem;">
+  <div class="col-3 ml-2">
+    <div class="rounded" style="min-width: 25rem;">
       <h4 class="card-header d-flex justify-content-between">{{listProp.title}}</h4>
       <button @click="deleteList">delete list</button>
       <div class="row tasks">
