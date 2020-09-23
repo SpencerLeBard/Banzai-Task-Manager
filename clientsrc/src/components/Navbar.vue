@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg bg-danger justfiy-content-center">
-    <router-link class="navbar-brand text-white text-center" :to="{ name: 'home' }">BANZAI | バンザイ</router-link>
+    <router-link class="navbar-brand text-white" :to="{ name: 'home' }">BANZAI | バンザイ</router-link>
     <button
       class="navbar-toggler"
       type="button"

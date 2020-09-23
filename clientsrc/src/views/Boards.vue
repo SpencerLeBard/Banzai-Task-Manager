@@ -1,14 +1,16 @@
 <template>
-  <div class="japanese-home-picture">
-    <div class="boards card create-boards-card justify-content-center google-fonts">
-      Create a Board or Pick One You Have Already Made!
-      <form @submit.prevent="addBoard">
-        <input type="text" placeholder="title" v-model="newBoard.title" required />
-        <input type="text" placeholder="description" v-model="newBoard.description" />
-        <button class="btn btn-danger" type="submit">Create Board</button>
-      </form>
-      <div class="boards-card card justify-content-center" v-for="board in boards" :key="board.id">
-        <router-link :to="{name: 'board', params: {boardId: board.id}}">{{board.title}}</router-link>
+  <div class="container-fluid japanese-home-picture">
+    <div class="row justify-content-center">
+      <div class="col-3 boards card create-boards-card align-items-center google-fonts text-white">
+        Create a Board or Pick One You Have Already Made!
+        <form @submit.prevent="addBoard">
+          <input type="text" placeholder="title" v-model="newBoard.title" required />
+          <input class="m-2" type="text" placeholder="description" v-model="newBoard.description" />
+          <button class="btn btn-danger m-2" type="submit">Create Board</button>
+        </form>
+        <div class="boards-card card" v-for="board in boards" :key="board.id">
+          <router-link :to="{name: 'board', params: {boardId: board.id}}">{{board.title}}</router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -44,12 +46,21 @@ export default {
 <style scoped>
 .create-boards-card {
   width: 50vw;
-  margin-left: 25vw;
-  height: 25vh;
+  margin-left: vw;
+  margin-top: 5vh;
+  background-color: rgba(148, 144, 144, 0.596);
+  padding: 10px;
 }
 .boards-card {
   height: 10vh;
   justify-content: center;
   width: 10vw;
+  transition: 0.25s ease;
+  cursor: pointer;
+  border-color: black;
+  margin-top: 2vh;
+}
+.boards-card:hover {
+  transform: scale(1.25);
 }
 </style>
