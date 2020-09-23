@@ -1,10 +1,19 @@
 <template>
   <div class="container-fluid board">
-    <h1 v-if="board.title">
-      {{board.title}}
-      <i class="fa fa-times" @click="deleteBoard" aria-hidden="true"></i>
-    </h1>
+    <button @click="deleteBoard">delete</button>
+    <h1 v-if="board.title">{{board.title}}</h1>
+    <i
+      class="fa fa-pencil text-warning"
+      aria-hidden="true"
+      @click="editToggle = !editToggle"
+      v-if="isCreator"
+    ></i>
+
     <h4 v-if="board.description">{{board.description}}</h4>
+    <form onsubmit.prevent="addList">
+      <input type="text" placeholder="list name" v-model="newList.title" required />
+      <button @click="addList">Add List</button>
+    </form>
     <div class="row lists">
       <list-component v-for="list in lists" :key="list.id" :listProp="list" />
       <!-- inject lists here -->
@@ -43,6 +52,14 @@ export default {
       return this.$store.state.tasks;
     },
   },
+  data() {
+    return {
+      newList: {
+        title: "",
+        boardId: this.$route.params.boardId,
+      },
+    };
+  },
   props: ["boardId"],
   components: {
     ListComponent,
@@ -50,7 +67,10 @@ export default {
   },
   methods: {
     deleteBoard() {
-      this.$store.dispatch("deleteBoard", this.board._id);
+      this.$store.dispatch("deleteBoard", this.board.id);
+    },
+    addList() {
+      this.$store.dispatch("addList", this.newList);
     },
   },
 };

@@ -47,6 +47,9 @@ export default new Vuex.Store({
     },
     setComments(state, data) {
       Vue.set(state.comments, data.taskId, data.comments)
+    },
+    createComment(state, comments) {
+      state.comments = comments
     }
   },
 
@@ -92,8 +95,8 @@ export default new Vuex.Store({
       try {
         await api.delete('boards/' + boardId)
         commit("removeBoard", boardId)
-        // commit("setActiveBoard", {})
-        // router.push({ name: "Boards" })
+        commit("setActiveBoard", {})
+        router.push({ name: "boards" })
       } catch (error) {
         console.error(error);
       }
@@ -144,6 +147,7 @@ export default new Vuex.Store({
       }
     },
 
+
     async getComments({ commit }, taskId) {
       try {
         let res = await api.get('tasks/' + taskId + '/comments')
@@ -151,7 +155,16 @@ export default new Vuex.Store({
       } catch (error) {
         console.error(error);
       }
-    }
+    },
+
+    async addComment({ commit }, commentData) {
+      try {
+        let res = await api.post('comments', commentData)
+        commit("createComment", res.data)
+      } catch (error) {
+        console.error(error);
+      }
+    },
 
 
 

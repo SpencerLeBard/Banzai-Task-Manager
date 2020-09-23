@@ -7,7 +7,7 @@
         <!-- Tasks injected here w/ cols -->
       </div>
       <form>
-        <input type="text" class="form-control" placeholder="Add list item + Enter" required />
+        <input type="text" class="form-control" placeholder="Add task + Enter" required />
       </form>
     </div>
   </div>
@@ -26,7 +26,20 @@ export default {
       return this.$store.state.tasks[this.listProp.id];
     },
   },
-  components: { TaskComponent },
+  data() {
+    return {
+      newTask: {
+        title: "",
+        listId: this.$route.params.taskId,
+      },
+    };
+  },
+  methods: {
+    addTask() {
+      this.$store.dispatch("addTask", this.newTask);
+    },
+    components: { TaskComponent },
+  },
 };
 </script>
 

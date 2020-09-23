@@ -36,9 +36,7 @@ export default {
       this.$store.dispatch("addBoard", this.newBoard);
       this.newBoard = { title: "", description: "" };
     },
-    deleteBoard() {
-      this.$store.dispatch("deleteBoard", this.post._id);
-    },
+    
   },
 };
 </script>
