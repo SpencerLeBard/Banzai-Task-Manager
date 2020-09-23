@@ -7,7 +7,7 @@
         <!-- Tasks injected here w/ cols -->
       </div>
       <form>
-        <input type="text" class="form-control" placeholder="Add list item + Enter" required />
+        <input type="text" class="form-control" placeholder="Add task + Enter" required />
       </form>
     </div>
   </div>
