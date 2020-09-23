@@ -1,4 +1,5 @@
 import { authProvider } from "@bcwdev/auth0-vue/AuthProvider"
+import { STATES } from "mongoose"
 import Vue from 'vue'
 import Vuex from 'vuex'
 import router from '../router/index'
@@ -39,8 +40,8 @@ export default new Vuex.Store({
     removeList(state, list) {
       state.lists = state.lists.filter(l => l.id != list)
     },
-    createList(state, lists) {
-      state.lists = lists
+    createList(state, list) {
+      state.lists = list
     },
     setTasks(state, data) {
       Vue.set(state.tasks, data.listId, data.tasks)
@@ -137,10 +138,11 @@ export default new Vuex.Store({
         console.error(error);
       }
     },
-    async addList({ commit, dispatch }, listData) {
+    async addList({ commit , state}, listData) {
       try {
         let res = await api.post('lists', listData)
-        commit("createList", res.data)
+        console.log(res.data)
+        commit("createList", [...state.lists, res.data])
       } catch (error) {
         console.error(error);
       }
@@ -178,7 +180,6 @@ export default new Vuex.Store({
       try {
         let res = await api.post('tasks', taskData)
         console.log(res);
-        commit("createTask", res.data)
         dispatch("getTasks", taskData.listId)
       } catch (error) {
         console.error(error);
@@ -198,7 +199,6 @@ export default new Vuex.Store({
     async addComment({ commit, dispatch }, commentData) {
       try {
         let res = await api.post('comments', commentData)
-        commit("createComment", res.data)
         dispatch("getComments", commentData.taskId)
       } catch (error) {
         console.error(error);
