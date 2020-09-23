@@ -5,6 +5,10 @@
       <p class="card-header d-flex justify-content-between">{{taskProp.title}}</p>
     </div>
     <comment-component v-for="comment in comments" :key="comment.id" :commentProp="comment" />
+    <form @submit.prevent="addComment">
+      <input type="text" placeholder="add comment" v-model="newComment.title" required />
+      <button type="submit">Add Comment</button>
+    </form>
   </div>
 </template>
 
@@ -24,7 +28,7 @@ export default {
     return {
       newComment: {
         title: "",
-        listId: this.$route.params.commentId,
+        taskId: this.taskProp.id,
       },
     };
   },
@@ -32,10 +36,10 @@ export default {
     addComment() {
       this.$store.dispatch("addComment", this.newComment);
     },
-    deleteTask(){
-      console.log(this.taskProp)
-      this.$store.dispatch('deleteTask', this.taskProp)
-    }
+    deleteTask() {
+      console.log(this.taskProp);
+      this.$store.dispatch("deleteTask", this.taskProp);
+    },
   },
   props: ["taskProp"],
   components: {

@@ -48,7 +48,7 @@ export default new Vuex.Store({
     createTask(state, tasks) {
       state.tasks = tasks
     },
-    removeTask(state, task){
+    removeTask(state, task) {
       state.tasks[task.listId] = state.tasks[task.listId].filter(t => t.id != task.id)
     },
     setComments(state, data) {
@@ -56,6 +56,9 @@ export default new Vuex.Store({
     },
     createComment(state, comments) {
       state.comments = comments
+    },
+    removeComment(state, comment) {
+      state.comments[comment.taskId] = state.comments[comment.taskId].filter(c => c.id != comment.id)
     }
   },
 
@@ -118,6 +121,14 @@ export default new Vuex.Store({
         console.error(error);
       }
     },
+    async editBoard({ commit }, boardData) {
+      try {
+        let res = await api.put('boards/' + boardData.id, boardData)
+        commit('setActiveBoard', res.data)
+      } catch (error) {
+        console.error(error);
+      }
+    },
     async getLists({ commit }, boardId) {
       try {
         let res = await api.get('boards/' + boardId + '/lists')
@@ -143,7 +154,7 @@ export default new Vuex.Store({
       }
     },
 
-    async deleteTask({ commit }, task){
+    async deleteTask({ commit }, task) {
       try {
         await api.delete('tasks/' + task.id)
         commit("removeTask", task)
@@ -184,23 +195,24 @@ export default new Vuex.Store({
       }
     },
 
-    async addComment({ commit }, commentData) {
+    async addComment({ commit, dispatch }, commentData) {
       try {
         let res = await api.post('comments', commentData)
         commit("createComment", res.data)
+        dispatch("getComments", commentData.taskId)
       } catch (error) {
         console.error(error);
       }
     },
 
-    async editBoard({ commit }, boardData){
+    async deleteComment({ commit }, comment) {
       try {
-        let res = await api.put('boards/' + boardData.id, boardData)
-        commit('setActiveBoard', res.data)
+        await api.delete('comments/' + comment.id)
+        commit("removeComment", comment)
       } catch (error) {
         console.error(error);
       }
-    }
+    },
 
 
 
