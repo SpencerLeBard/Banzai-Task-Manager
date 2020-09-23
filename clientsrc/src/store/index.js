@@ -166,6 +166,15 @@ export default new Vuex.Store({
       }
     },
 
+    async editBoard({ commit }, boardData){
+      try {
+        let res = await api.put('boards/' + boardData.id, boardData)
+        console.log(res.data)
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
 
 
     //#endregion

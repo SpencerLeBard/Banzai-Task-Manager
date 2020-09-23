@@ -1,20 +1,34 @@
 <template>
   <div class="container-fluid board">
     <button @click="deleteBoard">delete</button>
-    <h1 v-if="board.title">{{board.title}}</h1>
-    <i class="fa fa-pencil text-warning" aria-hidden="true" @click="editToggle = !editToggle"></i>
-    <form class="form-inline" @submit.prevent="editBoard" v-if="editToggle">
-      <input type="text" class="form-control" aria-describedby="helpId" v-model="boardData.title" />
-      <input type="text" class="form-control" aria-describedby="helpId" v-model="boardData.body" />
-      <button type="submit" class="btn btn-warning">
-        <i class="fa fa-arrow-circle-right big-icon" aria-hidden="true"></i>
-      </button>
-    </form>
+    <h1 v-if="board.title">
+      {{board.title}}
+    </h1> 
+    <i class="fa fa-pencil text-warning"
+       aria-hidden="true" 
+       @click="editToggle = !editToggle">
+      </i>
+      <form class="form-inline" @submit.prevent="editBoard" v-if="editToggle">
+              <input
+                type="text"
+                class="form-control"
+                aria-describedby="helpId"
+                v-model="boardData.title"
+              />
+              <input
+                type="text"
+                class="form-control"
+                aria-describedby="helpId"
+                v-model="boardData.body"
+              />
+              <button type="submit" class="btn btn-warning"><i class="fa fa-arrow-circle-right big-icon" aria-hidden="true"></i></button>
+          </form>
+
 
     <h4 v-if="board.description">{{board.description}}</h4>
     <form onsubmit.prevent="addList">
-      <input type="text" placeholder="list name" v-model="newList.title" required />
-      <button @click="addList">Add List</button>
+      <input type="text" placeholder="list name" v-model="newList.title" required>
+    <button @click="addList">Add List</button>
     </form>
     <div class="row lists">
       <list-component v-for="list in lists" :key="list.id" :listProp="list" />
@@ -54,18 +68,17 @@ export default {
       return this.$store.state.tasks;
     },
   },
-  data() {
-    return {
-      newList: {
-        title: "",
-        boardId: this.$route.params.boardId,
-      },
+  data(){
+    return {newList: {
+      title: '',
+      boardId: this.$route.params.boardId
+    },
       boardData: {
-        title: "",
-        body: "",
+        title: '',
+        body: ''
       },
-      editToggle: false,
-    };
+      editToggle: false
+    }
   },
   props: ["boardId"],
   components: {
@@ -76,9 +89,13 @@ export default {
     deleteBoard() {
       this.$store.dispatch("deleteBoard", this.board.id);
     },
-    addList() {
-      this.$store.dispatch("addList", this.newList);
+    addList(){
+      this.$store.dispatch('addList', this.newList)
     },
+    editBoard(){
+      this.boardData.id = this.$route.params.id
+      this.$store.dispatch('editBoard', this.boardData)
+    }
   },
 };
 </script>
