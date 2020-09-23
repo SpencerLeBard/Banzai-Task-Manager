@@ -1,11 +1,15 @@
 <template>
   <div class="col-4 ml-2">
-    <div class="rounded" style="min-width: 25%;">
-      <h4 class="card-header d-flex justify-content-between">{{listProp.title}}
-        <button @click="deleteList">Delete list</button>
-      </h4>
-      <form @submit.prevent="addTask">
-        <input type="text" placeholder="add task" v-model="newTask.title" required />
+    <div class="rounded bg-secondary p-1" style="min-width: 25%;">
+      <div class="card-header d-flex justify-content-between">
+        <h4 class="">{{listProp.title}}</h4>
+        <div class="buttons">
+          <i class="fa fa-plus mr-3 text-success" aria-hidden="true" @click="addTaskToggle = !addTaskToggle"></i>
+          <i class="fa fa-trash-o text-danger pointer" @click="deleteList" aria-hidden="true"></i>
+        </div>
+      </div>
+      <form @submit.prevent="addTask" v-if="addTaskToggle">
+        <input type="text" class="form-control mb-2" placeholder="add task" v-model="newTask.title" required />
       </form>
       
       <div class="row tasks">
@@ -35,6 +39,7 @@ export default {
         title: "",
         listId: this.listProp.id,
       },
+      addTaskToggle: false
     };
   },
   methods: {
@@ -51,4 +56,7 @@ export default {
 </script>
 
 <style>
+.pointer{
+  cursor: pointer;
+}
 </style>

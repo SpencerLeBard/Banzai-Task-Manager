@@ -1,14 +1,14 @@
 <template>
   <div class="container-fluid board">
-    <i class="fa fa-trash-o" @click="deleteBoard" aria-hidden="true"></i>
+    <i class="fa fa-trash-o pointer" @click="deleteBoard" aria-hidden="true"></i>
     <h1 v-if="board.title">
       {{board.title}}
     </h1> 
-    <i class="fa fa-pencil text-warning"
+    <i class="fa fa-pencil text-warning pointer"
        aria-hidden="true" 
        @click="editToggle = !editToggle">
       </i>
-      <form class="form-inline" @submit.prevent="editBoard, editToggle = !editToggle" v-if="editToggle">
+      <form class="form-inline" @submit.prevent="editBoard" v-if="editToggle">
               <input
                 type="text"
                 class="form-control"
@@ -21,7 +21,7 @@
                 aria-describedby="helpId"
                 v-model="boardData.description"
               />
-              <button type="submit" class="btn btn-warning"><i class="fa fa-arrow-circle-right big-icon" aria-hidden="true"></i></button>
+              <button type="submit" class="btn btn-warning" @click="editToggle = !editToggle"><i class="fa fa-arrow-circle-right big-icon" aria-hidden="true"></i></button>
           </form>
 
 
@@ -100,3 +100,8 @@ export default {
   },
 };
 </script>
+<style>
+.pointer{
+  cursor: pointer;
+}
+</style>

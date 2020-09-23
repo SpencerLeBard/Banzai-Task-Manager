@@ -1,14 +1,13 @@
 <template>
-  <div class="col-12 taskComp">
-    <div class="rounded">
+  <div class="col-10 offset-1 ">
+    <div class="card bg-light rounded mt-3 ">
       <p class="card-header d-flex justify-content-between">{{taskProp.title}}
-        <button @click="deleteTask">Delete Task</button>
+        <i class="fa fa-trash-o text-danger pointer" @click="deleteTask" aria-hidden="true"></i>
       </p>
     </div>
     <comment-component v-for="comment in comments" :key="comment.id" :commentProp="comment" />
     <form @submit.prevent="addComment">
-      <input type="text" placeholder="add comment" v-model="newComment.title" required />
-      <button type="submit">Add Comment</button>
+      <input type="text" class="form-control" placeholder="add comment" v-model="newComment.title" required />
     </form>
   </div>
 </template>
