@@ -2,7 +2,7 @@
   <div class="container-fluid board">
     <h1 v-if="board.title">
       {{board.title}}
-      <i class="fa fa-times" aria-hidden="true"></i>
+      <i class="fa fa-times" @click="deleteBoard" aria-hidden="true"></i>
     </h1>
     <h4 v-if="board.description">{{board.description}}</h4>
     <div class="row lists">
@@ -42,15 +42,16 @@ export default {
     tasks() {
       return this.$store.state.tasks;
     },
-    deleteBoard() {
-      this.$store.dispatch("deleteBoard", this.board._id);
-    },
   },
   props: ["boardId"],
   components: {
     ListComponent,
     TaskComponent,
   },
-  methods: {},
+  methods: {
+    deleteBoard() {
+      this.$store.dispatch("deleteBoard", this.board._id);
+    },
+  },
 };
 </script>
