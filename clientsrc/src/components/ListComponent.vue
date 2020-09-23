@@ -38,8 +38,8 @@ export default {
     addTask() {
       this.$store.dispatch("addTask", this.newTask);
     },
-    components: { TaskComponent },
   },
+  components: { TaskComponent },
 };
 </script>
 
