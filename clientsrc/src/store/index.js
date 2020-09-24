@@ -4,6 +4,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import router from '../router/index'
 import { api } from "./AxiosService"
+import ns from "../Services/NotificationService"
 
 Vue.use(Vuex)
 
@@ -103,10 +104,12 @@ export default new Vuex.Store({
 
     async deleteBoard({ commit }, boardId) {
       try {
-        await api.delete('boards/' + boardId)
-        commit("removeBoard", boardId)
-        commit("setActiveBoard", {})
-        router.push({ name: "boards" })
+        if (await ns.confirmAction("Do ya wanna delete this car?", "Check yoself, b4 you wreck yoself")) {
+          await api.delete('boards/' + boardId)
+          commit("removeBoard", boardId)
+          commit("setActiveBoard", {})
+          router.push({ name: "boards" })
+        }
       } catch (error) {
         console.error(error);
       }
@@ -138,7 +141,7 @@ export default new Vuex.Store({
         console.error(error);
       }
     },
-    async addList({ commit , state}, listData) {
+    async addList({ commit, state }, listData) {
       try {
         let res = await api.post('lists', listData)
         console.log(res.data)
