@@ -1,8 +1,8 @@
 import express from 'express'
 import BaseController from "../utils/BaseController";
 import auth0provider from "@bcwdev/auth0provider";
-import { boardService } from '../services/BoardService'
-import { listService } from '../services/ListService'
+import { boardService } from '../services/BoardService';
+import { listService } from '../services/ListService';
 
 
 
@@ -30,7 +30,6 @@ export class BoardsController extends BaseController {
     catch (err) { next(err) }
   }
 
-  // FIXME GET ALL LISTS
   async getListsByBoardId(req, res, next) {
     try {
       let data = await listService.getListsByBoardId(req.params.id, req.userInfo.email)
