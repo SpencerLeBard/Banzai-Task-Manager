@@ -1,10 +1,6 @@
 <template>
-<<<<<<< HEAD
-  <div class="col-3 ml-1">
-=======
   <div class="col-3">
->>>>>>> ae2d6065d189471d8f187a5739c0eef67b59653c
-    <div class="rounded bg-secondary p-1" style="width: 60%; min-height: 70vh;">
+    <div class="rounded p-1 trans-bg" style="width: 60%; min-height: 70vh;">
       <div class="card-header d-flex justify-content-end">
         <h4 class="pr-5">{{listProp.title}}</h4>
         <div class="btn-group dropright">
@@ -72,5 +68,8 @@ export default {
 <style>
 .pointer {
   cursor: pointer;
+}
+.trans-bg{
+  background-color: rgba(221, 221, 221, 0.767);
 }
 </style>

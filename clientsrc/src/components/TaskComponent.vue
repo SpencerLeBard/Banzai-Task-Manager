@@ -1,6 +1,6 @@
 <template>
   <div class="col-10 offset-1" >
-    <div class="card bg-light rounded mt-3 " data-toggle="modal" :data-target="'#modal'+taskProp.id">
+    <div class="card bg-white rounded mt-3 interactive " data-toggle="modal" :data-target="'#modal'+taskProp.id">
       <p class="card-header d-flex justify-content-between">{{taskProp.title}}
         <!-- MOVING DELETE BUTTON TO ELLIPSIS IN MODAL -->
         <!-- <i class="fa fa-trash-o text-danger pointer" @click="deleteTask" aria-hidden="true"></i> -->
@@ -34,7 +34,6 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
@@ -85,4 +84,16 @@ export default {
 </script>
 
 <style>
+
+.interactive{
+  cursor: pointer;
+  transition: transform .2s;
+
+}
+  .interactive:hover {
+    transform: scale(1.1);
+    box-shadow: 5px 5px 8px 2px #888888;
+  }
+
+
 </style>
