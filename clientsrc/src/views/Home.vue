@@ -9,7 +9,7 @@
     </div>
     <div class="row">
       <div class="col card-center">
-        <div class="card banzai-card google-fonts">
+        <div class="card banzai-card google-fonts shadow-lg">
           <div class="card-body">
             <h1 class="card-title">
               ban·zai
@@ -21,10 +21,10 @@
 
               <br />
               <br />
-              <h5>The word’s origin dates to the beginning of the Meiji period</h5>
-              <br />
-              <br />
-              <h5>Banzai is considered an interjection and related to interjections like "hurrah!" and "yippee!" ... Perhaps the best equivalent is the British shout “Long live the king/queen!”</h5>
+              <h5>
+                Banzai is considered an interjection and related to words like "hurrah!" and "yippee!"
+                <br />Perhaps the best equivalent is the British shout “Long Live the King/Queen!”
+              </h5>
               <br />
               <br />
               <h2>
@@ -57,6 +57,7 @@ export default {
 .japanese-home-picture {
   background: url(https://images.unsplash.com/photo-1492571350019-22de08371fd3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1849&q=80);
   height: 100vh;
+  /* object-fit: cover; */
 }
 .google-fonts {
   font-family: "Montserrat", sans-serif;
