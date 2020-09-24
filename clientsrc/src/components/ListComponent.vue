@@ -1,5 +1,5 @@
 <template>
-  <div class="col-4 ml-2">
+  <div class="col-3 ml-1">
     <div class="rounded bg-secondary p-1" style="width: 60%; min-height: 70vh;">
       <div class="card-header d-flex justify-content-end">
         <h4 class="pr-5">{{listProp.title}}</h4>

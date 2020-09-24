@@ -166,6 +166,7 @@ export default new Vuex.Store({
         if (await ns.confirmAction("Do you want to delete this task?", "You'll never get it back ...")) {
           await api.delete('tasks/' + task.id)
           commit("removeTask", task)
+          $(".modal-backdrop").hide()
         }
       } catch (error) {
         console.error(error);
