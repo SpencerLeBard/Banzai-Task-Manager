@@ -1,18 +1,22 @@
 <template>
   <div class="col-10 offset-1" >
-    <div class="card bg-light rounded mt-3 " data-toggle="modal" data-target="#exampleModal">
+    <div class="card bg-light rounded mt-3 " data-toggle="modal" :data-target="'#modal'+taskProp.id">
       <p class="card-header d-flex justify-content-between">{{taskProp.title}}
         <i class="fa fa-trash-o text-danger pointer" @click="deleteTask" aria-hidden="true"></i>
       </p>
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">{{taskProp.title}} Comments</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+    <div class="modal fade" :id="'modal'+taskProp.id" tabindex="-1" aria-labelledby="taskProp.idLabel" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+      <div class="d-flex justify-content-between p-2">
+        <h5 class="modal-title" :id="taskProp.id + 'Label'">{{taskProp.title}} Comments</h5>
+          <div class="btn-group dropright ">
+          <i class="fa fa-ellipsis-v btn " aria-hidden="true" role="button" data-toggle="dropdown"></i>
+          <div class="dropdown-menu ml-4">
+            <!-- <p class="btn" @click="addTaskToggle = !addTaskToggle">Add Task</p>
+            <p class="btn" @click="deleteList">Delete List</p> -->
+          </div>
+        </div>
       </div>
       <div class="modal-body">
         <ul class="list-group">

@@ -49,6 +49,7 @@ export default {
     addTask() {
       console.log(this.newTask);
       this.$store.dispatch("addTask", this.newTask);
+      this.addTaskToggle = !this.addTaskToggle
     },
     deleteList() {
       this.$store.dispatch("deleteList", this.listProp.id);
