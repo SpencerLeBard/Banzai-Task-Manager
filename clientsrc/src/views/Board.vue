@@ -1,34 +1,29 @@
 <template>
-  <div class="container-fluid board">
+  <div class="container-fluid board japanese-home-picture">
     <i class="fa fa-trash-o pointer" @click="deleteBoard" aria-hidden="true"></i>
-    <h1 v-if="board.title">
-      {{board.title}}
-    </h1> 
-    <i class="fa fa-pencil text-warning pointer"
-       aria-hidden="true" 
-       @click="editToggle = !editToggle">
-      </i>
-      <form class="form-inline" @submit.prevent="editBoard" v-if="editToggle">
-              <input
-                type="text"
-                class="form-control"
-                aria-describedby="helpId"
-                v-model="boardData.title"
-              />
-              <input
-                type="text"
-                class="form-control"
-                aria-describedby="helpId"
-                v-model="boardData.description"
-              />
-              <button type="submit" class="btn btn-warning" @click="editToggle = !editToggle"><i class="fa fa-arrow-circle-right big-icon" aria-hidden="true"></i></button>
-          </form>
-
+    <h1 v-if="board.title">{{board.title}}</h1>
+    <i
+      class="fa fa-pencil text-warning pointer"
+      aria-hidden="true"
+      @click="editToggle = !editToggle"
+    ></i>
+    <form class="form-inline" @submit.prevent="editBoard" v-if="editToggle">
+      <input type="text" class="form-control" aria-describedby="helpId" v-model="boardData.title" />
+      <input
+        type="text"
+        class="form-control"
+        aria-describedby="helpId"
+        v-model="boardData.description"
+      />
+      <button type="submit" class="btn btn-warning" @click="editToggle = !editToggle">
+        <i class="fa fa-arrow-circle-right big-icon" aria-hidden="true"></i>
+      </button>
+    </form>
 
     <h4 v-if="board.description">{{board.description}}</h4>
     <form onsubmit.prevent="addList">
-      <input type="text" placeholder="list name" v-model="newList.title" required>
-    <button @click="addList">Add List</button>
+      <input type="text" placeholder="list name" v-model="newList.title" required />
+      <button @click="addList">Add List</button>
     </form>
     <div class="row d-flex">
       <list-component v-for="list in lists" :key="list.id" :listProp="list" />
@@ -68,17 +63,18 @@ export default {
       return this.$store.state.tasks;
     },
   },
-  data(){
-    return {newList: {
-      title: '',
-      boardId: this.$route.params.boardId
-    },
-      boardData: {
-        title: '',
-        description: ''
+  data() {
+    return {
+      newList: {
+        title: "",
+        boardId: this.$route.params.boardId,
       },
-      editToggle: false
-    }
+      boardData: {
+        title: "",
+        description: "",
+      },
+      editToggle: false,
+    };
   },
   props: ["boardId"],
   components: {
@@ -89,19 +85,19 @@ export default {
     deleteBoard() {
       this.$store.dispatch("deleteBoard", this.board.id);
     },
-    addList(){
-      this.$store.dispatch('addList', this.newList)
+    addList() {
+      this.$store.dispatch("addList", this.newList);
     },
-    editBoard(){
-      this.boardData.id = this.$route.params.boardId
-      console.log(this.boardData)
-      this.$store.dispatch('editBoard', this.boardData)
-    }
+    editBoard() {
+      this.boardData.id = this.$route.params.boardId;
+      console.log(this.boardData);
+      this.$store.dispatch("editBoard", this.boardData);
+    },
   },
 };
 </script>
 <style>
-.pointer{
+.pointer {
   cursor: pointer;
 }
 </style>

@@ -58,6 +58,7 @@ export default {
   background: url(https://images.unsplash.com/photo-1492571350019-22de08371fd3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1849&q=80);
   height: 100vh;
   background-size: cover;
+  /* //NOTE STICKY */
 }
 .google-fonts {
   font-family: "Montserrat", sans-serif;
