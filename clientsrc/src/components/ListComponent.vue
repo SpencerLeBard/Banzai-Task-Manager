@@ -1,11 +1,14 @@
 <template>
   <div class="col-4 ml-2">
-    <div class="rounded bg-secondary p-1" style="min-width: 25%;">
-      <div class="card-header d-flex justify-content-between">
-        <h4 class="">{{listProp.title}}</h4>
-        <div class="buttons">
-          <i class="fa fa-plus mr-3 text-success" aria-hidden="true" @click="addTaskToggle = !addTaskToggle"></i>
-          <i class="fa fa-trash-o text-danger pointer" @click="deleteList" aria-hidden="true"></i>
+    <div class="rounded bg-secondary p-1" style="width: 60%; min-height: 70vh;">
+      <div class="card-header d-flex justify-content-end">
+        <h4 class="pr-5">{{listProp.title}}</h4>
+        <div class="btn-group dropright ">
+          <i class="fa fa-ellipsis-v btn " aria-hidden="true" role="button" data-toggle="dropdown"></i>
+          <div class="dropdown-menu ml-4">
+            <p class="btn" @click="addTaskToggle = !addTaskToggle">Add Task</p>
+            <p class="btn" @click="deleteList">Delete List</p>
+          </div>
         </div>
       </div>
       <form @submit.prevent="addTask" v-if="addTaskToggle">
