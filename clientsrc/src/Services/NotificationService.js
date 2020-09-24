@@ -8,8 +8,8 @@ export default class NotificationService {
         text: text,
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: 'red',
-        cancelButtonColor: 'blue',
+        confirmButtonColor: '#DC3545',
+        cancelButtonColor: '#17A2B8',
         confirmButtonText: 'Yes, delete it!'
       })
       if (res.value) {
@@ -19,6 +19,23 @@ export default class NotificationService {
     } catch (error) {
 
     }
+  }
+  static toast(title = "Default Toast", timer = 5000, icon = "info") {
+    // @ts-ignore
+    Swal.fire({
+      title: title,
+      icon: icon,
+      iconHtml: `<img
+        src="https://media4.giphy.com/media/QBd2kLB5qDmysEXre9/giphy.gif"
+        style="width: 50px"
+        alt
+      />`,
+      timer: timer,
+      toast: true,
+      position: "top-right",
+      showConfirmButton: false,
+      timerProgressBar: true
+    })
   }
 
 }
