@@ -155,7 +155,7 @@ export default new Vuex.Store({
         if (await ns.confirmAction("Do you want to delete this list?", "You'll never get it back ...")) {
           await api.delete('lists/' + listId)
           commit("removeList", listId)
-          ns.toast("TASK DESTROYED", 2500)
+          ns.toast("TASK DESTROYED", 1500)
         }
       } catch (error) {
         console.error(error);

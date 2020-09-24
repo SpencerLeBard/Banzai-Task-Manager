@@ -5,25 +5,56 @@
         class="col-4 boards card create-boards-card align-items-center google-fonts text-white m-3 shadow-lg"
       >
         <h5>Create a Board or Pick One You Have Already Made!</h5>
-        <form @submit.prevent="addBoard">
-          <input
-            class="form-control m-3"
-            type="text"
-            placeholder="Board Title ... "
-            v-model="newBoard.title"
-            required
-          />
-          <input
-            class="form-control m-3"
-            type="text"
-            placeholder="Description ..."
-            v-model="newBoard.description"
-          />
-          <button
-            class="btn btn-danger m-2 create-board-button bg-danger text-white"
-            type="submit"
-          >Create Board</button>
-        </form>
+        <button
+          class="btn btn-danger m-2 create-board-button bg-danger text-white"
+          type="button"
+          data-toggle="modal"
+          data-target="#exampleModal"
+        >Create New Board</button>
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">Create Board</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">...</div>
+              <form @submit.prevent="addBoard">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Board Title ... "
+                  v-model="newBoard.title"
+                  required
+                />
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Description ..."
+                  v-model="newBoard.description"
+                />
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button
+                    data-dismiss="modal"
+                    type="submit"
+                    class="btn btn-primary"
+                    @submit.prevent="addBoard"
+                  >Create Board</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
         <ul class="list-group list-boards m-1 col" v-for="board in boards" :key="board.id">
           <li class="list-group-item">
             <router-link

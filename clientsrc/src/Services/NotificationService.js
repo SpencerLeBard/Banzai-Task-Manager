@@ -20,7 +20,7 @@ export default class NotificationService {
 
     }
   }
-  static toast(title = "Default Toast", timer = 5000) {
+  static toast(title = "Default Toast", timer = 1500) {
     // @ts-ignore
     Swal.fire({
       title: title,
