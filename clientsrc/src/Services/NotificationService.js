@@ -8,8 +8,8 @@ export default class NotificationService {
         text: text,
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: 'blue',
-        cancelButtonColor: 'orange',
+        confirmButtonColor: 'red',
+        cancelButtonColor: 'blue',
         confirmButtonText: 'Yes, delete it!'
       })
       if (res.value) {

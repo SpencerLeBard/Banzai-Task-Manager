@@ -21,7 +21,7 @@
             </ul>
           </div>
         </div>
-        <div class="col-8 d-flex justify-content-center">
+        <div class="col-8 d-flex justify-content-center align-items-center">
           <router-link class="navbar-brand text-white" :to="{ name: 'home' }">BANZAI | バンザイ</router-link>
           <button
             class="navbar-toggler"
@@ -37,8 +37,8 @@
         </div>
         <div class="col d-flex justify-content-end">
           <span class="navbar-text">
-            <button class="btn btn-sm bg-white" @click="login" v-if="!$auth.isAuthenticated">Login</button>
-            <button class="btn btn-sm bg-white" @click="logout" v-else>logout</button>
+            <button class="btn btn-md bg-white" @click="login" v-if="!$auth.isAuthenticated">Login</button>
+            <button class="btn btn-md bg-white" @click="logout" v-else>Logout</button>
           </span>
         </div>
       </div>
@@ -74,8 +74,6 @@ export default {
 .navbar {
   background-color: 931a25;
   color: white;
-}
-.a {
-  color: white;
+  height: 8vh;
 }
 </style>

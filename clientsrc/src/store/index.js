@@ -104,7 +104,7 @@ export default new Vuex.Store({
 
     async deleteBoard({ commit }, boardId) {
       try {
-        if (await ns.confirmAction("Do ya wanna delete this car?", "Check yoself, b4 you wreck yoself")) {
+        if (await ns.confirmAction("Do you want to delete this board?", "You'll never get it back ...")) {
           await api.delete('boards/' + boardId)
           commit("removeBoard", boardId)
           commit("setActiveBoard", {})
@@ -152,8 +152,10 @@ export default new Vuex.Store({
     },
     async deleteList({ commit }, listId) {
       try {
-        await api.delete('lists/' + listId)
-        commit("removeList", listId)
+        if (await ns.confirmAction("Do you want to delete this list?", "You'll never get it back ...")) {
+          await api.delete('lists/' + listId)
+          commit("removeList", listId)
+        }
       } catch (error) {
         console.error(error);
       }
@@ -161,8 +163,10 @@ export default new Vuex.Store({
 
     async deleteTask({ commit }, task) {
       try {
-        await api.delete('tasks/' + task.id)
-        commit("removeTask", task)
+        if (await ns.confirmAction("Do you want to delete this task?", "You'll never get it back ...")) {
+          await api.delete('tasks/' + task.id)
+          commit("removeTask", task)
+        }
       } catch (error) {
         console.error(error);
       }
