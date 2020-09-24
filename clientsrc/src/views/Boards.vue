@@ -22,32 +22,29 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title text-dark" id="exampleModalLabel">Create Board</h5>
+                <h5 class="modal-title text-dark" id="exampleModalLabel">Create Board - (つくる)</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">...</div>
               <form @submit.prevent="addBoard">
                 <input
-                  class="form-control"
+                  class="form-control forms-custom"
                   type="text"
                   placeholder="Board Title ... "
                   v-model="newBoard.title"
                   required
                 />
                 <input
-                  class="form-control"
+                  class="form-control forms-custom"
                   type="text"
                   placeholder="Description ..."
                   v-model="newBoard.description"
                 />
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <div class="modal-footer justify-content-center">
                   <button
-                    data-dismiss="modal"
                     type="submit"
-                    class="btn btn-primary"
+                    class="btn btn-danger"
                     @submit.prevent="addBoard"
                   >Create Board</button>
                 </div>
@@ -92,6 +89,9 @@ export default {
       this.$store.dispatch("addBoard", this.newBoard);
       this.newBoard = { title: "", description: "" };
     },
+    deleteBoard() {
+      this.$store.dispatch("deleteBoard", this.board.id);
+    },
   },
 };
 </script>
@@ -129,5 +129,11 @@ export default {
 .create-board-button:hover {
   background-color: black;
   color: white;
+}
+.forms-custom {
+  width: 20vw;
+  margin-left: 2vw;
+  margin-bottom: 2vh;
+  margin-top: 2vh;
 }
 </style>

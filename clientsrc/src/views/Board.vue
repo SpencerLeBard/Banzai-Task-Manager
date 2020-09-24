@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid board japanese-home-picture">
-    <i class="fa fa-trash-o pointer" @click="deleteBoard" aria-hidden="true"></i>
+    <i class="fa fa-trash-o pointer justify-content-end" @click="deleteBoard" aria-hidden="true"></i>
     <h1 v-if="board.title">{{board.title}}</h1>
     <i
       class="fa fa-pencil text-warning pointer"

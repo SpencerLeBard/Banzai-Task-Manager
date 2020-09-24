@@ -97,6 +97,12 @@ export default new Vuex.Store({
       try {
         let res = await api.post('boards', boardData)
         commit("createBoard", res.data)
+        // @ts-ignore
+        $("#exampleModal").hide()
+        // @ts-ignore
+        $(".modal-backdrop").hide()
+
+
       } catch (error) {
         console.error(error);
       }
@@ -109,6 +115,8 @@ export default new Vuex.Store({
           commit("removeBoard", boardId)
           commit("setActiveBoard", {})
           router.push({ name: "boards" })
+          ns.toast("TASK DESTROYED", 1500)
+
         }
       } catch (error) {
         console.error(error);
@@ -167,6 +175,7 @@ export default new Vuex.Store({
         if (await ns.confirmAction("Do you want to delete this task?", "You'll never get it back ...")) {
           await api.delete('tasks/' + task.id)
           commit("removeTask", task)
+          // @ts-ignore
           $(".modal-backdrop").hide()
         }
       } catch (error) {
