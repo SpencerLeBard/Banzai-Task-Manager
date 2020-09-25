@@ -5,8 +5,8 @@
         <div class="title d-flex justify-content-center">
           <h1 v-if="board.title && !editToggle">{{board.title}}</h1>
           <div class="btn-group dropright">
-              <i class="fa fa-ellipsis-v btn" aria-hidden="true" role="button" data-toggle="dropdown"></i>
-              <div class="dropdown-menu ml-4 text-center">
+              <i class="fa fa-ellipsis-v btn big-button" aria-hidden="true" role="button" data-toggle="dropdown"></i>
+              <div class="dropdown-menu ml-1 text-center">
                 <p class="btn" @click="editToggle = !editToggle">Edit Board</p>
                 <p class="btn" @click="deleteBoard">Delete Board</p>
               </div>
@@ -121,8 +121,12 @@ export default {
   background-color: rgba(68, 67, 67, 0.534);
 }
 .big-button{
-  font-size: 1.7em;
+  font-size: 1.3em;
 }
+  .big-button:active{
+    text-shadow: 0px 0px 1px #2c2c2c;
+    transform: ;
+  }
 .text-shadow{
   text-shadow: 2px 2px 6px #000000;
 }
