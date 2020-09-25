@@ -39,7 +39,7 @@ export default class NotificationService {
       position: 'top-end',
       icon: 'success',
       showConfirmButton: false,
-      timer: 1500
+      timer: 2000
     })
   }
 

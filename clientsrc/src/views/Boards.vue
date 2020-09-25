@@ -137,6 +137,6 @@ export default {
   margin-top: 2vh;
 }
 .modal-dialog {
-  margin-top: 20vh;
+  margin-top: 19vh;
 }
 </style>
