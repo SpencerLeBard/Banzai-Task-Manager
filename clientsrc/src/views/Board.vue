@@ -46,18 +46,6 @@
 
     <div class="row mt-4 d-flex">
       <list-component v-for="list in lists" :key="list.id" :listProp="list" />
-      <!-- inject lists here -->
-      <!-- <div class="col-3 listComp">
-        <div class="rounded" style="width: 25rem;">
-          <h4 class="card-header d-flex justify-content-between">3 things on your agenda</h4>
-          <ul class="list-group" id="tasks">
-            
-          </ul>
-          <form @click="addTask">
-            <input type="text" class="form-control" placeholder="Add list item + Enter" required />
-          </form>
-        </div>
-      </div>-->
     </div>
   </div>
 </template>
@@ -128,7 +116,6 @@ export default {
 }
   .big-button:active{
     text-shadow: 0px 0px 1px #2c2c2c;
-    transform: ;
   }
 .text-shadow{
   text-shadow: 2px 2px 6px #000000;
