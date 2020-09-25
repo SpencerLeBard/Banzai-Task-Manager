@@ -25,7 +25,7 @@
             v-model="boardData.description"
             placeholder="Board Description..."
           />
-          <button type="submit" class="btn btn-warning" @click="editToggle = !editToggle">
+          <button type="submit" class="btn btn-warning" @click="editToggle = !editToggle; ">
             <i class="fa fa-arrow-circle-right big-icon" aria-hidden="true"></i>
           </button>
         </form>
@@ -33,10 +33,12 @@
     </div>
     <div class="row">
       <div class="col-12 d-flex">
-        <form class="form-inline">
+        <form @submit="addList" class="form-inline">
           <div class="form-group">
-          <i class="fa fa-plus-circle btn btn-danger  text-shadow pointer" @click="addList" aria-hidden="true"></i>
-          <input type="text" placeholder="Type new list name..." class="form-control" v-model="newList.title" required />
+            <button class="btn btn-danger" type="submit">
+              <i class="fa fa-plus-circle text-shadow pointer" aria-hidden="true"></i>
+            </button>
+            <input type="text" placeholder="Type new list name..." class="form-control" v-model="newList.title" required />
           </div>
         </form>
       </div>
@@ -104,6 +106,7 @@ export default {
     },
     addList() {
       this.$store.dispatch("addList", this.newList);
+      
     },
     editBoard() {
       this.boardData.id = this.$route.params.boardId;
