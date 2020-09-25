@@ -12,7 +12,7 @@
       tabindex="-1"
       aria-labelledby="taskProp.idLabel"
       aria-hidden="true"
-    >
+      >
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="d-flex justify-content-between p-2">
@@ -24,8 +24,8 @@
                 role="button"
                 data-toggle="dropdown"
               ></i>
-              <div class="dropdown-menu ml-4">
-                <p class="btn" @click="addCommentToggle = !addCommentToggle">Add Comment</p>
+              <div class="dropdown-menu ml-2">
+                <p class="btn" @click="addCommentToggle = !addCommentToggle; newComment.title = ''">Add Comment</p>
                 <p class="btn" @click="deleteTask">Delete Task</p>
               </div>
             </div>
@@ -54,22 +54,6 @@
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
-      </div>
-      <div class="modal-body">
-        <ul class="list-group">
-          <comment-component v-for="comment in comments" :key="comment.id" :commentProp="comment" /> 
-          <li class="list-group-item" v-if="addCommentToggle">
-            <form @submit.prevent="addComment">
-              <input type="text" class="form-control mb-2" placeholder="Comment title + Enter" v-model="newComment.title" required />
-            </form>
-          </li>
-          
-        </ul>
-
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
     <!-- Add form to modal that toggles when clicking task -->

@@ -1,12 +1,12 @@
 <template>
-  <div class="col-3">
-    <div class="rounded p-1 trans-bg" style="width: 60%; min-height: 70vh;">
+  <div class="col-12 col-md-4 col-lg-3 mb-lg-0 mb-2">
+    <div class="rounded p-1 trans-bg" style=" min-height: 40vh;">
       <div class="card-header d-flex justify-content-end">
         <h4 class="pr-5">{{listProp.title}}</h4>
         <div class="btn-group dropright">
           <i class="fa fa-ellipsis-v btn" aria-hidden="true" role="button" data-toggle="dropdown"></i>
           <div class="dropdown-menu ml-4">
-            <p class="btn" @click="addTaskToggle = !addTaskToggle">Add Task</p>
+            <p class="btn" @click="addTaskToggle = !addTaskToggle; newTask.title = '' ">Add Task</p>
             <p class="btn" @click="deleteList">Delete List</p>
           </div>
         </div>

@@ -1,31 +1,48 @@
 <template>
   <div class="container-fluid board japanese-home-picture">
-    <i class="fa fa-trash-o pointer justify-content-end" @click="deleteBoard" aria-hidden="true"></i>
-    <h1 v-if="board.title">{{board.title}}</h1>
-    <i
-      class="fa fa-pencil text-warning pointer"
-      aria-hidden="true"
-      @click="editToggle = !editToggle"
-    ></i>
-    <form class="form-inline" @submit.prevent="editBoard" v-if="editToggle">
-      <input type="text" class="form-control" aria-describedby="helpId" v-model="boardData.title" />
-      <input
-        type="text"
-        class="form-control"
-        aria-describedby="helpId"
-        v-model="boardData.description"
-      />
-      <button type="submit" class="btn btn-warning" @click="editToggle = !editToggle">
-        <i class="fa fa-arrow-circle-right big-icon" aria-hidden="true"></i>
-      </button>
-    </form>
+    <div class="row header d-flex justify-content-center text-light title-bg">
+      <div class="col-12 d-flex flex-column">
+        <div class="title d-flex justify-content-center">
+          <h1 v-if="board.title && !editToggle">{{board.title}}</h1>
+          <div class="btn-group dropright">
+              <i class="fa fa-ellipsis-v btn big-button" aria-hidden="true" role="button" data-toggle="dropdown"></i>
+              <div class="dropdown-menu ml-1 text-center">
+                <p class="btn" @click="editToggle = !editToggle">Edit Board</p>
+                <p class="btn" @click="deleteBoard">Delete Board</p>
+              </div>
+          </div>
+        </div>
+        <h4 v-if="board.description && !editToggle">{{board.description}}</h4>
+      </div>
 
-    <h4 v-if="board.description">{{board.description}}</h4>
-    <form onsubmit.prevent="addList">
-      <input type="text" placeholder="list name" v-model="newList.title" required />
-      <button @click="addList">Add List</button>
-    </form>
-    <div class="row d-flex">
+      <div id="editForm">
+        <form class="form" @submit.prevent="editBoard" v-if="editToggle">
+          <input type="text" class="form-control mb-2" aria-describedby="helpId" v-model="boardData.title" placeholder="Board Title..." />
+          <input
+            type="text"
+            class="form-control"
+            aria-describedby="helpId"
+            v-model="boardData.description"
+            placeholder="Board Description..."
+          />
+          <button type="submit" class="btn btn-warning" @click="editToggle = !editToggle">
+            <i class="fa fa-arrow-circle-right big-icon" aria-hidden="true"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 d-flex">
+        <form class="form-inline">
+          <div class="form-group">
+          <i class="fa fa-plus-circle btn btn-danger  text-shadow pointer" @click="addList" aria-hidden="true"></i>
+          <input type="text" placeholder="Type new list name..." class="form-control" v-model="newList.title" required />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="row mt-4 d-flex">
       <list-component v-for="list in lists" :key="list.id" :listProp="list" />
       <!-- inject lists here -->
       <!-- <div class="col-3 listComp">
@@ -99,5 +116,18 @@ export default {
 <style>
 .pointer {
   cursor: pointer;
+}
+.title-bg{
+  background-color: rgba(68, 67, 67, 0.534);
+}
+.big-button{
+  font-size: 1.3em;
+}
+  .big-button:active{
+    text-shadow: 0px 0px 1px #2c2c2c;
+    transform: ;
+  }
+.text-shadow{
+  text-shadow: 2px 2px 6px #000000;
 }
 </style>
