@@ -56,7 +56,7 @@ export default {
 <style>
 .japanese-home-picture {
   background: url(https://images.unsplash.com/photo-1492571350019-22de08371fd3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1849&q=80);
-  height: 100vh;
+  height: 92vh;
   background-size: cover;
   /* position: sticky; */
   /* //NOTE STICKY */
