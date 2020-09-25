@@ -53,7 +53,6 @@ export default {
   },
   methods: {
     addTask() {
-      console.log(this.newTask);
       this.$store.dispatch("addTask", this.newTask);
       this.addTaskToggle = !this.addTaskToggle;
     },
@@ -69,7 +68,7 @@ export default {
 .pointer {
   cursor: pointer;
 }
-.trans-bg{
+.trans-bg {
   background-color: rgba(221, 221, 221, 0.767);
 }
 </style>

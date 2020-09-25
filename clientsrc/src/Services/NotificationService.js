@@ -28,8 +28,18 @@ export default class NotificationService {
       toast: true,
       position: "center",
       showConfirmButton: false,
-      timerProgressBar: true,
       imageUrl: 'https://media1.giphy.com/media/2fWvmhF4TiBGw/giphy.gif'
+    })
+  }
+  static success(title = "Nice! You created a to-do board!") {
+    // @ts-ignore
+    Swal.fire({
+      title: title,
+      text: "Nice!",
+      position: 'top-end',
+      icon: 'success',
+      showConfirmButton: false,
+      timer: 1500
     })
   }
 

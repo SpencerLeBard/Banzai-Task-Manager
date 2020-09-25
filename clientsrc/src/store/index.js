@@ -101,7 +101,7 @@ export default new Vuex.Store({
         $("#exampleModal").hide()
         // @ts-ignore
         $(".modal-backdrop").hide()
-
+        ns.success()
 
       } catch (error) {
         console.error(error);
