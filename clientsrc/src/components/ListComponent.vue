@@ -6,7 +6,7 @@
         <div class="btn-group dropright">
           <i class="fa fa-ellipsis-v btn" aria-hidden="true" role="button" data-toggle="dropdown"></i>
           <div class="dropdown-menu ml-4">
-            <p class="btn" @click="addTaskToggle = !addTaskToggle">Add Task</p>
+            <p class="btn" @click="addTaskToggle = !addTaskToggle; newTask.title = '' ">Add Task</p>
             <p class="btn" @click="deleteList">Delete List</p>
           </div>
         </div>
