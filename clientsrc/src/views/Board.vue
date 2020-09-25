@@ -42,7 +42,7 @@
       </div>
     </div>
 
-    <div class="row mt-4">
+    <div class="row mt-4 d-flex">
       <list-component v-for="list in lists" :key="list.id" :listProp="list" />
       <!-- inject lists here -->
       <!-- <div class="col-3 listComp">

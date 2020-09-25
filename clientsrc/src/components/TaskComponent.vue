@@ -24,7 +24,7 @@
                 role="button"
                 data-toggle="dropdown"
               ></i>
-              <div class="dropdown-menu ml-4">
+              <div class="dropdown-menu ml-2">
                 <p class="btn" @click="addCommentToggle = !addCommentToggle; newComment.title = ''">Add Comment</p>
                 <p class="btn" @click="deleteTask">Delete Task</p>
               </div>
