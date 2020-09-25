@@ -29,12 +29,16 @@
             <i class="fa fa-arrow-circle-right big-icon" aria-hidden="true"></i>
           </button>
         </form>
-
-<!-- TODO ADD ADD-LIST BUTTON ON NEW ROW -->
-        <!-- <form onsubmit.prevent="addList">
-          <input type="text" placeholder="list name" v-model="newList.title" required />
-          <button @click="addList">Add List</button>
-        </form> -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 d-flex">
+        <form class="form-inline">
+          <div class="form-group">
+          <i class="fa fa-plus-circle btn btn-danger  text-shadow pointer" @click="addList" aria-hidden="true"></i>
+          <input type="text" placeholder="Type new list name..." class="form-control" v-model="newList.title" required />
+          </div>
+        </form>
       </div>
     </div>
 
@@ -115,5 +119,11 @@ export default {
 }
 .title-bg{
   background-color: rgba(68, 67, 67, 0.534);
+}
+.big-button{
+  font-size: 1.7em;
+}
+.text-shadow{
+  text-shadow: 2px 2px 6px #000000;
 }
 </style>
