@@ -3,6 +3,8 @@ import { BadRequest } from "../utils/Errors"
 
 
 class BoardService {
+  
+  //NOTE MongoDB has join-like lookup, but mongoose has more powerful 'populate' which lets you reference documents in other collections
   async getAll(userEmail) {
     return await dbContext.Boards.find({ creatorEmail: userEmail }).populate("creator", "name picture")
   }
