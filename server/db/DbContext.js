@@ -5,6 +5,8 @@ import BoardSchema from '../models/Board'
 import ListSchema from '../models/List'
 import TaskSchema from '../models/Task'
 import CommentSchema from '../models/Comment'
+
+//NOTE mongoose methods model defines a model or retrieves it 
 class DbContext {
   Values = mongoose.model("Value", ValueSchema);
   Profile = mongoose.model("Profile", ProfileSchema);
